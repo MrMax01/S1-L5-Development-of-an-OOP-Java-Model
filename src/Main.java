@@ -10,39 +10,183 @@ public class Main {
         Scanner in = new Scanner(System.in);
         MultimediaElement[] playList= new MultimediaElement[5];
         for (int i = 0; i < playList.length; i++) {
-            askTypeOfMedia(in,);
+            playList[i]= askTypeOfMedia(in, i);
         }
 
     in.close();
     }
-    public static void askTypeOfMedia(Scanner in){
+    public static MultimediaElement askTypeOfMedia(Scanner in, int i){
+       int choise=0;
+//Questo do while controlla se l'utente inserisce i dati corretamente senza che incappi in errori
+        do{
 
-        System.out.println("SCEGLI QUALE MEDIA CARICARE INSERENDO IL NUMERO CORRISPONDENTE:");
-        System.out.println("1. IMAGE");
-        System.out.println("2. AUDIO");
-        System.out.println("3. VIDEO");
-        int choise= in.nextInt();
-        checkChoiseMade(choise, in);
+            if(choise<0 || choise>3){
+                System.out.println("ERRORE!DIGITARE UN NUMERO TRA 1, 2 e 3:");
+
+            }else{
+                System.out.println("CANZONE N°"+(i+1));
+                System.out.println("SCEGLI QUALE MEDIA CARICARE INSERENDO IL NUMERO CORRISPONDENTE:");
+                System.out.println("1. IMAGE");
+                System.out.println("2. AUDIO");
+                System.out.println("3. VIDEO");
+            }
+
+
+            while(!in.hasNextInt()) {
+                System.out.println("ERRORE!DIGITARE UN NUMERO TRA 1, 2 e 3:");
+
+                in.nextLine();
+            }
+            choise= Integer.parseInt(in.nextLine());
+        }while(choise<0 || choise>3);
+        return checkChoiseMade(choise, in);
     }
-    public static void checkChoiseMade(int choise, Scanner in){
+    public static MultimediaElement checkChoiseMade(int choise, Scanner in){
+        MultimediaElement media= null;
         switch (choise){
             case 1:{
-
+                   media= createImage(in);
                 break;
             }
             case 2:{
-                //crea audio
+                media =createAudio(in);
             }
-            case 3:{
-                //crea video;
+            case 3: {
+                media= createVideo(in);
                 break;
             }
-            default:
-                System.out.println("ERRORE! LE SELEZIONI POSSIBILI SONO SOLO 1,2 o 3");
-                askTypeOfMedia(in);
-                break;
         }
+        return media;
+
+    }
+    public static Image createImage( Scanner in){
+
+        int brightness=0;
+        String title;
+        System.out.println("DIGITARE TITOLO DELL'IMMAGINE:");
+        title= in.nextLine();
+
+        do{
+
+            if(brightness<0 || brightness>5){
+                System.out.println("ERRORE!DIGITARE UN NUMERO DA 0 a 5:");
+            }else{
+                System.out.println("DIGITARE UN NUMERO DA 0 a 5:");
+            }
+
+
+            while(!in.hasNextInt()) {
+                System.out.println("ERRORE!DIGITARE UN NUMERO DA 0 a 5:");
+
+                in.nextLine();
+            }
+            brightness= Integer.parseInt(in.nextLine());
+        }while(brightness<0 || brightness>5);
+      return new Image(title, brightness);
 
     }
 
+    public static Audio createAudio(Scanner in){
+        int volume=0;
+        int duration =0;
+        String title;
+        System.out.println("DIGITARE TITOLO DELL'AUDIO:");
+        title= in.nextLine();
+
+        do{
+
+            if(duration<0 || duration>5){
+                System.out.println("ERRORE! L'AUDIO PUO' DURARE MASSIMO 5");
+            }else{
+                System.out.println("QUANTO DURA IL TUO FILE AUDIO(digitare un numero da 0 a 5)?:");
+            }
+
+
+            while(!in.hasNextInt()) {
+                System.out.println("ERRORE! L'AUDIO PUO' DURARE MASSIMO 5:");
+
+                in.nextLine();
+            }
+            duration= Integer.parseInt(in.nextLine());
+        }while(duration<0 || duration>5);
+
+        do{
+
+            if(volume<0 || volume>5){
+                System.out.println("ERRORE! IL VOLUME PUO' ESSERE IMPOSTATO AD UN MASSIMO 5");
+            }else{
+                System.out.println("IMPOSTA IL VOLUME(digitare un numero da 0 a 5):");
+            }
+
+
+            while(!in.hasNextInt()) {
+                System.out.println(" ERRORE! IL VOLUME PUO' ESSERE IMPOSTATO AD UN MASSIMO 5(no parole)");
+
+                in.nextLine();
+            }
+            volume= Integer.parseInt(in.nextLine());
+        }while(volume<0 || volume>5);
+        return new Audio(title,duration, volume);
+    }
+    public static Video createVideo(Scanner in){
+        int brightness=0;
+        int volume=0;
+        int duration =0;
+        String title;
+        System.out.println("DIGITARE TITOLO DELL'AUDIO:");
+        title= in.nextLine();
+
+        do{
+
+            if(brightness<0 || brightness>5){
+                System.out.println("ERRORE!DIGITARE UN NUMERO DA 0 a 5:");
+            }else{
+                System.out.println("DIGITARE UN NUMERO DA 0 a 5:");
+            }
+
+
+            while(!in.hasNextInt()) {
+                System.out.println("ERRORE!DIGITARE UN NUMERO DA 0 a 5:");
+
+                in.nextLine();
+            }
+            brightness= Integer.parseInt(in.nextLine());
+        }while(brightness<0 || brightness>5);
+
+        do{
+
+            if(duration<0 || duration>5){
+                System.out.println("ERRORE! L'AUDIO PUO' DURARE MASSIMO 5");
+            }else{
+                System.out.println("QUANTO DURA IL TUO FILE AUDIO(digitare un numero da 0 a 5)?:");
+            }
+
+
+            while(!in.hasNextInt()) {
+                System.out.println("ERRORE! L'AUDIO PUO' DURARE MASSIMO 5:");
+
+                in.nextLine();
+            }
+            duration= Integer.parseInt(in.nextLine());
+        }while(duration<0 || duration>5);
+
+        do{
+
+            if(volume<0 || volume>5){
+                System.out.println("ERRORE! IL VOLUME PUO' ESSERE IMPOSTATO AD UN MASSIMO 5");
+            }else{
+                System.out.println("IMPOSTA IL VOLUME(digitare un numero da 0 a 5):");
+            }
+
+
+            while(!in.hasNextInt()) {
+                System.out.println(" ERRORE! IL VOLUME PUO' ESSERE IMPOSTATO AD UN MASSIMO 5(no parole)");
+
+                in.nextLine();
+            }
+            volume= Integer.parseInt(in.nextLine());
+        }while(volume<0 || volume>5);
+    return new Video(title, duration, volume, brightness);
+
+    }
 }
