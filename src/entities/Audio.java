@@ -28,17 +28,19 @@ public Audio (String title, int duration, int volume){
 
     @Override
     public void turnUpVolume() {
-        if(this.volume++ <= MAX_VOLUME){
+        if(this.volume+1 <= MAX_VOLUME){
             this.volume++;
+            System.out.println("LIVELLO VOLUME:"+this.volume);
         }else{
             System.out.println("VOLUME MASSIMO RAGGIUNTO!:"+this.volume);
         }
     }
 
     @Override
-    public void lowerVolume() {
-        if(this.volume-- >= 0){
+    public void turnDownVolume() {
+        if(this.volume-1 >= 0){
             this.volume--;
+            System.out.println("LIVELLO VOLUME:"+this.volume);
         }else{
             System.out.println("VOLUME MINIMO RAGGIUNTO:"+ this.volume);
         }
