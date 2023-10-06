@@ -9,11 +9,52 @@ public class Main {
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
         MultimediaElement[] playList= new MultimediaElement[5];
+        int off=-1;
+
         for (int i = 0; i < playList.length; i++) {
             playList[i]= askTypeOfMedia(in, i);
         }
+        while(off!=0){
 
-    in.close();
+
+            int choise=0;
+            //Questo do while controlla se l'utente inserisce i dati corretamente senza che incappi in errori
+            do{
+
+                if(choise<0 || choise>5){
+                    System.out.println("ERRORE!DIGITARE UN NUMERO QUELLI POSSIBILI");
+
+                }else{
+                    System.out.println("Scegli File Multimediale da riprodurre/mostrare");
+                    for (int i = 0; i < playList.length; i++) {
+                        System.out.println((i+1)+playList[i].getTitle());
+                    }
+
+                }
+
+
+                while(!in.hasNextInt()) {
+                    System.out.println("ERRORE!DIGITARE UN NUMERO TRA 1, 2 e 3:");
+
+                    in.nextLine();
+                }
+                choise= Integer.parseInt(in.nextLine());
+                }while(choise<0 || choise>5);
+                if(choise ==0){
+                    off=0;
+                }
+                if(playList[choise-1] instanceof Image){
+                    ((Image) playList[choise-1]).show();
+                }else if(playList[choise-1] instanceof Video){
+
+                    ((Video) playList[choise-1]).play();
+                }else{
+                    ((Audio)playList[choise-1]).play();
+                }
+
+
+            }
+        in.close();
     }
     public static MultimediaElement askTypeOfMedia(Scanner in, int i){
        int choise=0;
