@@ -10,12 +10,19 @@ public Audio (String title, int duration, int volume){
     setVolume(volume);
 }
 
+
+
     public int getDuration() {
         return duration;
     }
 
     public void setDuration(int duration) {
-        this.duration = duration;
+        if(duration>=0 && duration<=MAX_DURATION){
+            this.duration = duration;
+
+        }else{
+            System.out.println("brithess deve essere un valore positivo minore di "+MAX_DURATION);
+        }
     }
 
     public int getVolume() {
@@ -25,6 +32,8 @@ public Audio (String title, int duration, int volume){
     public void setVolume(int volume) {
         this.volume = volume;
     }
+
+
 
     @Override
     public void turnUpVolume() {

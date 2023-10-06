@@ -1,10 +1,12 @@
 package entities;
 
-public class Image extends MultimediaElement implements ImageInterface{
+public class Video extends Audio implements ImageInterface{
     private int brightness;
 
-    public Image(String title, int brightness){
-        super(title);
+
+
+    public Video(String title, int duration, int volume, int brightness) {
+        super(title, duration, volume);
         setBrightness(brightness);
     }
 
@@ -14,7 +16,7 @@ public class Image extends MultimediaElement implements ImageInterface{
 
     public void setBrightness(int brightness) {
         if(brightness>=0 && brightness<=MAX_BRIGHTNESS){
-        this.brightness = brightness;
+            this.brightness = brightness;
 
         }else{
             System.out.println("brithess deve essere un valore positivo minore di "+MAX_BRIGHTNESS);
@@ -40,14 +42,26 @@ public class Image extends MultimediaElement implements ImageInterface{
             System.out.println("LUMINOSITA' MINIMA RAGGIUNTA:"+ this.brightness);
         }
     }
-    public void show(){
-        StringBuilder builder = new StringBuilder();
-        for (int i = 0; i < this.brightness; i++) {
-            builder.append('*');
-        }
-        String totalBrightness = builder.toString();
-        System.out.println(getTitle()+totalBrightness);
 
+
+
+    @Override
+    public void play() {
+        StringBuilder builder = new StringBuilder();
+        for (int i = 0; i < getVolume() ; i++) {
+            builder.append('!');
+        }
+        String totalVolume = builder.toString();
+        StringBuilder builderForBrightness = new StringBuilder();
+        for (int i = 0; i < this.brightness ; i++) {
+            builderForBrightness.append('*');
+        }
+        String totalBrightness = builderForBrightness.toString();
+
+        for (int i = 0; i < getDuration(); i++) {
+            System.out.println(getTitle()+totalVolume+totalBrightness);
+        }
     }
 }
+
 
