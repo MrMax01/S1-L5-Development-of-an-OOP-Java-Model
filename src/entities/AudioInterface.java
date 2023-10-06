@@ -1,6 +1,8 @@
 package entities;
 
 public interface AudioInterface {
-      public void turnUpBrightness();
-      public void lowerBrightness();
+      int MAX_VOLUME=5;
+      public void turnUpVolume();
+      public void lowerVolume();
+      public void play();
 }
