@@ -49,7 +49,8 @@ public class Main {
                 break;
             }
             case 2:{
-                media =createAudio(in);
+                media= createAudio(in);
+                break;
             }
             case 3: {
                 media= createVideo(in);
@@ -69,14 +70,14 @@ public class Main {
         do{
 
             if(brightness<0 || brightness>5){
-                System.out.println("ERRORE!DIGITARE UN NUMERO DA 0 a 5:");
+                System.out.println("ERRORE!IMPOSTA LIVELLO DI LUMINOSITA' DA 0 a 5:");
             }else{
-                System.out.println("DIGITARE UN NUMERO DA 0 a 5:");
+                System.out.println("IMPOSTA LIVELLO DI LUMINOSITA' DA 0 a 5:");
             }
 
 
             while(!in.hasNextInt()) {
-                System.out.println("ERRORE!DIGITARE UN NUMERO DA 0 a 5:");
+                System.out.println("ERRORE!IMPOSTA LIVELLO DI LUMINOSITA' DA 0 a 5:");
 
                 in.nextLine();
             }
@@ -133,20 +134,20 @@ public class Main {
         int volume=0;
         int duration =0;
         String title;
-        System.out.println("DIGITARE TITOLO DELL'AUDIO:");
+        System.out.println("DIGITARE TITOLO DEL VIDEO:");
         title= in.nextLine();
 
         do{
 
             if(brightness<0 || brightness>5){
-                System.out.println("ERRORE!DIGITARE UN NUMERO DA 0 a 5:");
+                System.out.println("ERRORE!IMPOSTA LIVELLO DI LUMINOSITA' DA 0 a 5:");
             }else{
-                System.out.println("DIGITARE UN NUMERO DA 0 a 5:");
+                System.out.println("IMPOSTA LIVELLO DI LUMINOSITA' DA 0 a 5:");
             }
 
 
             while(!in.hasNextInt()) {
-                System.out.println("ERRORE!DIGITARE UN NUMERO DA 0 a 5:");
+                System.out.println("ERRORE!IMPOSTA LIVELLO DI LUMINOSITA' DA 0 a 5:");
 
                 in.nextLine();
             }
