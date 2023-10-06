@@ -22,19 +22,19 @@ public class Main {
             do{
 
                 if(choise<0 || choise>5){
-                    System.out.println("ERRORE!DIGITARE UN NUMERO QUELLI POSSIBILI");
+                    System.out.println("ERRORE!DIGITARE UN NUMERO TRA QUELLI DISPONIBILI");
 
                 }else{
-                    System.out.println("Scegli File Multimediale da riprodurre/mostrare");
+                    System.out.println("SCESGLI UN FILE MULTIMEDIALE DA RIPRODURRE/MOSTRARE");
                     for (int i = 0; i < playList.length; i++) {
-                        System.out.println((i+1)+playList[i].getTitle());
+                        System.out.println((i+1)+". "+playList[i].getTitle());
                     }
 
                 }
 
 
                 while(!in.hasNextInt()) {
-                    System.out.println("ERRORE!DIGITARE UN NUMERO TRA 1, 2 e 3:");
+                    System.out.println("ERRORE!DIGITARE UN NUMERO TRA QUELLI DISPONIBILI:");
 
                     in.nextLine();
                 }
@@ -46,7 +46,6 @@ public class Main {
                 if(playList[choise-1] instanceof Image){
                     ((Image) playList[choise-1]).show();
                 }else if(playList[choise-1] instanceof Video){
-
                     ((Video) playList[choise-1]).play();
                 }else{
                     ((Audio)playList[choise-1]).play();
@@ -65,7 +64,7 @@ public class Main {
                 System.out.println("ERRORE!DIGITARE UN NUMERO TRA 1, 2 e 3:");
 
             }else{
-                System.out.println("CANZONE N°"+(i+1));
+                System.out.println("MEDIA FILE N°"+(i+1));
                 System.out.println("SCEGLI QUALE MEDIA CARICARE INSERENDO IL NUMERO CORRISPONDENTE:");
                 System.out.println("1. IMAGE");
                 System.out.println("2. AUDIO");
@@ -73,12 +72,16 @@ public class Main {
             }
 
 
-            while(!in.hasNextInt()) {
-                System.out.println("ERRORE!DIGITARE UN NUMERO TRA 1, 2 e 3:");
+            while(!in.hasNextInt() ) {
+                System.out.println("SCEGLI QUALE MEDIA CARICARE INSERENDO IL NUMERO CORRISPONDENTE:");
 
                 in.nextLine();
             }
+
+
             choise= Integer.parseInt(in.nextLine());
+
+
         }while(choise<0 || choise>3);
         return checkChoiseMade(choise, in);
     }
